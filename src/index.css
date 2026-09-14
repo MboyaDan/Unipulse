@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background-color: #0A0A0A;
+  }
+  body {
+    @apply bg-base text-ink font-display antialiased;
+    font-feature-settings: 'ss01' 1;
+  }
+  ::selection {
+    background: #C6FF3D;
+    color: #0A0A0A;
+  }
+  :focus-visible {
+    outline: 2px solid #C6FF3D;
+    outline-offset: 2px;
+  }
+  input, select, textarea {
+    background: transparent;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .num {
+    @apply font-mono tabular-nums;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-lime text-base font-display font-semibold px-6 py-3.5 text-[15px] transition-colors hover:bg-ink active:bg-ink disabled:opacity-40 disabled:pointer-events-none;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 border border-hairline text-ink font-display font-medium px-6 py-3.5 text-[15px] transition-colors hover:border-ink disabled:opacity-40 disabled:pointer-events-none;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-1.5 text-muted hover:text-ink transition-colors text-sm;
+  }
+  .field {
+    @apply w-full border border-hairline bg-surface px-4 py-3.5 text-ink placeholder:text-faint text-[16px] focus:border-lime outline-none transition-colors;
+  }
+  .field-label {
+    @apply block text-[13px] text-muted mb-2;
+  }
+  .container-narrow {
+    @apply mx-auto w-full max-w-[560px] px-5;
+  }
+  .container-wide {
+    @apply mx-auto w-full max-w-[1180px] px-5;
+  }
+}
