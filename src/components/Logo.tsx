@@ -9,7 +9,7 @@ export function Logo({ className = '' }: { className?: string }) {
         <span className="bg-hairline rounded-full group-hover:bg-lime/40 transition-colors" />
         <span className="bg-lime rounded-full" />
       </span>
-      <span className="font-display font-semibold text-[17px] tracking-tight text-ink">UniPulse</span>
+      <span className="font-display font-semibold text-[17px] tracking-tight text-ink">Cohort</span>
     </Link>
   )
 }

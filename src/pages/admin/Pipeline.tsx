@@ -4,7 +4,7 @@ import { AdminHeader } from '@/components/AdminHeader'
 import { DotCluster } from '@/components/DotCluster'
 import { CreateCommunityModal } from '@/components/CreateCommunityModal'
 import type { CommunityStatus, UniversityFull } from '@/types'
-
+import { AddUniversityModal } from '@/components/AddUniversityModal'
 interface Row extends UniversityFull {
   country_name: string
   country_code: string
@@ -34,6 +34,7 @@ export default function Pipeline() {
   const [countryFilter, setCountryFilter] = useState<string>('all')
   const [statusFilter, setStatusFilter] = useState<string>('all')
   const [modalUni, setModalUni] = useState<UniversityFull | null>(null)
+  const [showAddModal, setShowAddModal] = useState(false)
 
   async function load() {
     setLoading(true)
@@ -93,6 +94,9 @@ export default function Pipeline() {
             )
           )}
         </select>
+        <button onClick={() => setShowAddModal(true)} className="btn-primary py-2 px-4 text-[13px] ml-auto">
+  + Add university
+</button>
       </div>
 
       <div className="px-6 lg:px-10 py-6">
@@ -160,6 +164,15 @@ export default function Pipeline() {
           }}
         />
       )}
+      {showAddModal && (
+  <AddUniversityModal
+    onClose={() => setShowAddModal(false)}
+    onCreated={() => {
+      setShowAddModal(false)
+      load()
+    }}
+  />
+)}
     </div>
   )
 }
